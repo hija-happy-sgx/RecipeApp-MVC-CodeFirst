@@ -1,0 +1,145 @@
+﻿1. Requirement Analysis
+
+Core features:
+
+Manage Recipes (CRUD).
+
+Manage Ingredients (CRUD).
+
+Categorize Recipes (e.g., Desserts, Main Course).
+
+Define Recipe–Ingredient relationship with quantity.
+
+Database: SQL Server (via EF Core Code-First).
+
+UI: ASP.NET Core MVC with Razor views.
+
+
+
+2. System Design
+
+Architecture: MVC + EF Core Repository (DbContext).
+
+Entities:
+
+Recipe (Id, Title, Instructions, CategoryId)
+
+Ingredient (Id, Name)
+
+Category (Id, Name)
+
+RecipeIngredient (RecipeId, IngredientId, Quantity)
+
+Relationships:
+
+Recipe ↔ Category: One-to-Many.
+
+Recipe ↔ Ingredient: Many-to-Many via RecipeIngredient.
+
+UI Pages:
+
+/Recipes (list, create, edit, delete).
+
+/Ingredients (list, create, edit, delete).
+
+/Categories (list, create, edit, delete).
+
+
+3. Implementation
+
+Setup project with ASP.NET Core MVC template.
+
+Install EF Core packages. : Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+
+Define Models + DbContext.
+
+Configure connection string.
+
+Apply migrations (Add-Migration, Update-Database).
+
+Scaffold Controllers + Views for CRUD.
+
+Add navigation (menu bar to access Recipes/Ingredients/Categories).
+
+
+4. Testing
+
+Unit testing for DbContext (in-memory DB).
+
+Functional testing of CRUD operations.
+
+Manual UI testing.
+
+
+
+5. Deployment
+
+Run locally first.
+
+Prepare for publishing (IIS/Azure/other).
+
+Use SQL Server in production.
+
+
+
+
+
+
+Milestone 1: Project Setup (Day 1–2) 
+
+ Create new ASP.NET Core MVC project.
+
+ Install EF Core NuGet packages.
+
+ Configure connection string in appsettings.json.
+
+ Setup RecipeContext (DbContext).
+
+Milestone 2: Data Modeling (Day 3–4)
+
+ Define Models: Recipe, Ingredient, Category, RecipeIngredient.
+
+ Configure relationships in OnModelCreating.
+
+ Add initial migration (Add-Migration InitialCreate).
+
+ Update database (Update-Database) → Verify tables in SQL Server.
+
+Milestone 3: CRUD Scaffolding (Day 5–6)
+
+ Scaffold Controllers + Views for:
+
+Recipes
+
+Ingredients
+
+Categories
+
+ Add navigation links in _Layout.cshtml.
+
+Milestone 4: Core Testing (Day 7)
+
+ Test CRUD functionality manually (create, edit, delete recipes, etc.).
+
+ Verify relationships (e.g., Recipe has Ingredients, belongs to Category).
+
+Milestone 5: UI & UX Polish (Week 2)
+
+ Add validation attributes (e.g., [Required], [StringLength]).
+
+ Improve layout/navigation.
+
+ Add basic styling with Bootstrap.
+
+Milestone 6: Advanced Features (Future Iterations)
+
+ Search recipes by title/category.
+
+ Upload recipe images.
+
+ Authentication (login/logout).
+
+ User-specific recipe collections.
+
+ API endpoints (if we expand to Angular/React).
